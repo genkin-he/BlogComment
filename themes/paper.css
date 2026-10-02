@@ -88,7 +88,8 @@ main .gsc-main .gsc-timeline .gsc-comment > div {
   background-color: var(--paper-2);
   overflow: hidden;
 }
-main .gsc-main .gsc-comments { padding-right: 4px; }
+/* 给硬阴影留出位置，否则会被 iframe 边缘切掉 */
+main .gsc-main .gsc-comments { padding: 0 5px 6px 0; }
 main .gsc-main .gsc-comment-box-tabs { border-bottom: 1px dashed var(--ink-3); background-color: var(--paper-3); }
 main .gsc-main .gsc-comment-box-tabs button.color-bg-canvas { background-color: var(--paper-2); border-color: var(--ink-3); font-weight: 700; }
 main .gsc-main .gsc-comment-box-textarea,
