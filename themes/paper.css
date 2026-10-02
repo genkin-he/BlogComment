@@ -1,0 +1,116 @@
+/*!
+ * giscus 纸色主题：沿用博客的纸色 / 铁路红 / 座位蓝
+ * 在官方 light / dark 主题上只覆盖颜色变量，代码高亮等其余部分保持官方值
+ * 发布方式见 README：必须走带 CORS 头的 CDN（jsDelivr），不能放在 blog.genkin.top
+ */
+@import url("https://giscus.app/themes/light.css");
+@import url("https://giscus.app/themes/dark.css") (prefers-color-scheme: dark);
+
+main {
+  --paper: #f3ecdc; --paper-2: #eae1cc; --paper-3: #e0d5bb;
+  --ink: #1d1a15; --ink-2: #4a443a; --ink-3: #6f6858;
+  --rail: #c1361f; --rail-deep: #8e2412; --seat: #2f5c7a; --moon: #b8860b;
+  --line: rgba(29, 26, 21, .16);
+
+  --color-canvas-default: var(--paper-2);
+  --color-canvas-subtle: var(--paper-3);
+  --color-canvas-inset: var(--paper);
+  --color-canvas-overlay: var(--paper-2);
+  --color-fg-default: var(--ink);
+  --color-fg-muted: var(--ink-2);
+  --color-fg-subtle: var(--ink-3);
+  --color-border-default: var(--ink);
+  --color-border-muted: var(--line);
+  --color-neutral-muted: rgba(111, 104, 88, .2);
+
+  --color-accent-fg: var(--rail);
+  --color-accent-emphasis: var(--rail);
+  --color-accent-muted: rgba(193, 54, 31, .4);
+  --color-accent-subtle: rgba(193, 54, 31, .1);
+  --color-attention-fg: var(--moon);
+  --color-success-fg: var(--seat);
+  --color-danger-fg: var(--rail-deep);
+
+  --color-btn-text: var(--ink);
+  --color-btn-bg: var(--paper);
+  --color-btn-border: var(--ink);
+  --color-btn-hover-bg: var(--paper-3);
+  --color-btn-hover-border: var(--ink);
+  --color-btn-active-bg: var(--paper-3);
+  --color-btn-selected-bg: var(--paper-3);
+  --color-btn-primary-text: var(--paper);
+  --color-btn-primary-bg: var(--rail);
+  --color-btn-primary-border: var(--ink);
+  --color-btn-primary-hover-bg: var(--rail-deep);
+  --color-btn-primary-hover-border: var(--ink);
+  --color-btn-primary-selected-bg: var(--rail-deep);
+  --color-btn-primary-disabled-text: rgba(243, 236, 220, .7);
+  --color-btn-primary-disabled-bg: rgba(193, 54, 31, .5);
+  --color-btn-primary-disabled-border: var(--line);
+
+  --color-segmented-control-bg: var(--paper-3);
+  --color-segmented-control-button-bg: var(--paper);
+  --color-segmented-control-button-selected-border: var(--ink);
+  --color-action-list-item-default-hover-bg: rgba(193, 54, 31, .08);
+  --color-social-reaction-bg-hover: var(--paper-3);
+  --color-social-reaction-bg-reacted-hover: rgba(193, 54, 31, .16);
+  --color-scale-gray-1: var(--paper-3);
+  --color-scale-blue-1: rgba(193, 54, 31, .12);
+
+  --serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Noto Serif SC", Georgia, serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  main {
+    --paper: #1a1814; --paper-2: #24211b; --paper-3: #2e2a22;
+    --ink: #f0e9d8; --ink-2: #c9bfa8; --ink-3: #9a917d;
+    --rail: #e0583f; --rail-deep: #f08a74; --seat: #7fb0d1; --moon: #e0b44a;
+    --line: rgba(240, 233, 216, .16);
+    --color-neutral-muted: rgba(154, 145, 125, .25);
+    --color-accent-muted: rgba(224, 88, 63, .45);
+    --color-accent-subtle: rgba(224, 88, 63, .14);
+    --color-btn-primary-text: #1a1814;
+    --color-btn-primary-disabled-text: rgba(26, 24, 20, .7);
+    --color-btn-primary-disabled-bg: rgba(224, 88, 63, .5);
+    --color-action-list-item-default-hover-bg: rgba(224, 88, 63, .12);
+    --color-social-reaction-bg-reacted-hover: rgba(224, 88, 63, .2);
+    --color-scale-blue-1: rgba(224, 88, 63, .16);
+  }
+}
+
+/* 票根式外框：墨线描边 + 硬阴影。giscus 自己的规则用到 :not() 等高优先级选择器，这里统一挂在 main .gsc-main 下压过它 */
+main .gsc-main .gsc-comment-box:not(.gsc-comment-box-is-reply),
+main .gsc-main .gsc-timeline .gsc-comment > div {
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--ink);
+  background-color: var(--paper-2);
+  overflow: hidden;
+}
+main .gsc-main .gsc-comments { padding-right: 4px; }
+main .gsc-main .gsc-comment-box-tabs { border-bottom: 1px dashed var(--ink-3); background-color: var(--paper-3); }
+main .gsc-main .gsc-comment-box-tabs button.color-bg-canvas { background-color: var(--paper-2); border-color: var(--ink-3); font-weight: 700; }
+main .gsc-main .gsc-comment-box-textarea,
+main .gsc-main .gsc-comment-box-textarea-extras { background-color: var(--paper); border-color: var(--ink-3); }
+main .gsc-main .gsc-comment-box-textarea:focus { border-color: var(--rail); box-shadow: 0 0 0 3px var(--color-accent-subtle); outline: none; }
+main .gsc-main .gsc-comment-header { border-bottom: 1px dashed var(--line); }
+main .gsc-main .gsc-reply-box { border-top: 1px dashed var(--ink-3); }
+
+main .gsc-main .gsc-reactions-count,
+main .gsc-main .gsc-comments-count { font-family: var(--serif); font-weight: 900; letter-spacing: .04em; }
+main .gsc-main .gsc-comments-count a { text-decoration: none; }
+main .gsc-main .gsc-social-reaction-summary-item { border-color: var(--ink); background-color: var(--paper-2); }
+main .gsc-main .gsc-social-reaction-summary-item-count,
+main .gsc-main time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+main .gsc-main .btn { border: 1.5px solid var(--ink); border-radius: 8px; box-shadow: 3px 3px 0 var(--ink); transition: transform 120ms, box-shadow 120ms; }
+main .gsc-main .btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+main .gsc-main .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+main .gsc-main .btn-primary { font-weight: 700; letter-spacing: .06em; }
+main .gsc-main .btn:focus-visible,
+main .gsc-main .gsc-social-reaction-summary-item:focus-visible { outline: 3px solid var(--rail); outline-offset: 2px; }
+
+main .gsc-homepage-bg { background-color: transparent; }
+main .gsc-loading-image { filter: sepia(.6); }
+@media (prefers-reduced-motion: reduce) { main .gsc-main .btn { transition: none; } }
